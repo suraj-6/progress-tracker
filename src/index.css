@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@layer base {
+  /*
+    Theme tokens (CSS variables)
+    NOTE: Components should use tokens via var(--token) and avoid hardcoded Tailwind colors.
+  */
+  :root {
+    color-scheme: light;
+
+    --background: #e0f2fe;
+    --foreground: #0b1220;
+    --primary: #0ea5e9;
+    --secondary: #38bdf8;
+    --accent: #0284c7;
+    --muted: #bae6fd;
+    --card: #ffffff;
+    --border: rgba(2, 132, 199, 0.25);
+    --ring: #0ea5e9;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+  }
+
+  /* Theme classes */
+  .theme-ocean {
+    --background: #e0f2fe;
+    --foreground: #0b1220;
+    --primary: #0ea5e9;
+    --secondary: #38bdf8;
+    --accent: #0284c7;
+    --muted: #bae6fd;
+    --card: #ffffff;
+    --border: rgba(2, 132, 199, 0.25);
+    --ring: #0ea5e9;
+  }
+
+  .theme-forest {
+    --background: #ecfdf5;
+    --foreground: #071a12;
+    --primary: #16a34a;
+    --secondary: #4ade80;
+    --accent: #15803d;
+    --muted: #bbf7d0;
+    --card: #ffffff;
+    --border: rgba(21, 128, 61, 0.25);
+    --ring: #16a34a;
+  }
+
+  .theme-sunset {
+    --background: #fff7ed;
+    --foreground: #1b1207;
+    --primary: #f97316;
+    --secondary: #fb923c;
+    --accent: #ea580c;
+    --muted: #fed7aa;
+    --card: #ffffff;
+    --border: rgba(234, 88, 12, 0.25);
+    --ring: #f97316;
+  }
+
+  .theme-midnight {
+    --background: #0f172a;
+    --foreground: #e5e7eb;
+    --primary: #6366f1;
+    --secondary: #a5b4fc;
+    --accent: #4f46e5;
+    --muted: rgba(99, 102, 241, 0.15);
+    --card: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.12);
+    --ring: #6366f1;
+  }
+
+  html {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
+@layer components {
+  /* Light mode base styles */
+  .light {
+    @apply bg-white text-slate-900;
+  }
+
+  /* Dark mode base styles */
+  .dark {
+    @apply bg-slate-950 text-white;
+  }
+
+  /* Smooth theme transition */
+  html {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  /* Focus ring utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900;
+  }
+
+  /* Smooth transitions */
+  .transition-theme {
+    @apply transition-colors duration-300;
+  }
+
+  /* Dark mode text colors */
+  .text-muted {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .text-muted-foreground {
+    @apply text-slate-500 dark:text-slate-500;
+  }
+
+  /* Dark mode borders */
+  .border-muted {
+    @apply border-slate-200 dark:border-slate-800;
+  }
+
+  /* Dark mode backgrounds */
+  .bg-muted {
+    @apply bg-slate-100 dark:bg-slate-900;
+  }
+
+  .bg-card {
+    @apply bg-white dark:bg-slate-800;
+  }
+}
