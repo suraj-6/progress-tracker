@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { format, setMonth, setYear, startOfMonth, endOfMonth, eachDayOfInterval, getDay, addMonths, subMonths } from 'date-fns';
 
 interface DatePickerProps {
@@ -9,6 +9,10 @@ interface DatePickerProps {
 export function DatePicker({ selectedDate, onDateChange }: DatePickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [viewDate, setViewDate] = useState(selectedDate);
+
+  useEffect(() => {
+    setViewDate(selectedDate);
+  }, [selectedDate]);
 
   const monthStart = startOfMonth(viewDate);
   const monthEnd = endOfMonth(viewDate);
